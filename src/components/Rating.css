@@ -1,0 +1,41 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.star.full {
+  color: #ffd700;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+}
+
+.star.half {
+  background: linear-gradient(90deg, #ffd700 50%, transparent 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.reviews-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
