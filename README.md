@@ -7,13 +7,13 @@
 ## Screenshots
 
 Home Page:
-![Home](public/Home.png)
+![Home](public/Home.PNG)
 
 Product List:
-![Product List](public/Product.png)
+![Product List](public/Product.PNG)
 
 Admin Dashboard:
-![Admin Board](public/Admin.png)
+![Admin Board](public/Admin.PNG)
 
 # ShopHub - E-Commerce Web Application
 
