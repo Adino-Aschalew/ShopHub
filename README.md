@@ -7,17 +7,13 @@
 ## Screenshots
 
 Home Page:
-![Home Screenshot](https://via.placeholder.com/800x400?text=Home+Page+Screenshot)
+![Home screen](public/Home.png)
 
 Product List:
-![Product List Screenshot](https://via.placeholder.com/800x400?text=Product+List+Screenshot)
+![Product List](public/Product.png)
 
 Admin Dashboard:
-![Admin Screenshot](https://via.placeholder.com/800x400?text=Admin+Dashboard+Screenshot)
-
-_Replace these URLs with your own screenshots from the app for a more professional README._
-
-# ShopHub - E-Commerce Web Application
+![Admin Board](public/Admin.png)
 
 # ShopHub - E-Commerce Web Application
 
