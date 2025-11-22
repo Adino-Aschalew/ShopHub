@@ -1,3 +1,7 @@
+body{
+  font-weight: 500;
+  font-family: "Ubuntu",system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +35,12 @@ a {
   text-decoration: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
 }
@@ -46,9 +55,8 @@ button {
   transition: all 0.3s ease;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto rgba(102, 126, 234, 0.5);
+button:hover{
+  background-color: rgba(75, 74, 74, 0.158);
 }
 
 /* Scrollbar styling */
@@ -62,17 +70,17 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2, #667eea);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
 }
 
 /* Selection styling */
 ::selection {
-  background: #667eea;
+  background: #0575E6;
   color: white;
 }
 
@@ -81,21 +89,44 @@ button:focus-visible {
   text-align: center;
 }
 
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
+.mt-1 {
+  margin-top: 0.5rem;
+}
 
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -106,6 +137,7 @@ button:focus-visible {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

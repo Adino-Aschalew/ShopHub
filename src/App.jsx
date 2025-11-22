@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
+import CookieBanner from './components/CookieBanner';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -22,6 +23,7 @@ import ShippingPage from './pages/ShippingPage';
 import ReturnsPage from './pages/ReturnsPage';
 import TermsPage from './pages/TermsPage';
 import CookiePage from './pages/CookiePage';
+import AdminPage from './pages/AdminPage';
 
 
 import Image from './assets/Loading.gif';
@@ -34,8 +36,8 @@ const ProtectedRoute = ({ children }) => {
   if (isLoading) {
     return (
       <div className="loading-container">
-       <img src={Image} alt="Loading..." />
-            </div>
+        <img src={Image} alt="Loading..." style={{borderRadius:'5px',background:'rgba(0,0,0,0.3)',width:'70px',height:'70px',backdropFilter:'blur(50px)'}}/>
+      </div>
     );
   }
 
@@ -83,6 +85,7 @@ function AppContent() {
               <Route path="/returns" element={<ReturnsPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/cookie" element={<CookiePage />} />
+              <Route path="/admin" element={<AdminPage />} />
               <Route path="/categories" element={<ProductListPage />} />
               <Route path="/deals" element={<ProductListPage />} />
               {/* Fallback route */}
@@ -90,6 +93,7 @@ function AppContent() {
             </Routes>
           </main>
         </div>
+        <CookieBanner />
         <Footer />
         <Cart />
       </div>

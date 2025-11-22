@@ -6,33 +6,56 @@ import './AuthPages.css';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+
+  // Individual field error states
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [generalError, setGeneralError] = useState('');
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
 
-    // Basic validation
-    if (!email || !password) {
-      setError('Please fill in all fields');
-      return;
+    // Reset previous errors
+    setEmailError('');
+    setPasswordError('');
+    setGeneralError('');
+
+    let isValid = true;
+
+    // Email validation
+    if (!email.trim()) {
+      setEmailError('Email is required');
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError('Please enter a valid email address');
+      isValid = false;
     }
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
+    // Password validation (same policy as signup)
+    const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/;
+    if (!password) {
+      setPasswordError('Password is required');
+      isValid = false;
+    } else if (!pwdRegex.test(password)) {
+      setPasswordError('Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character');
+      isValid = false;
     }
+
+    if (!isValid) return;
 
     // Simulate login
     try {
       const result = login(email, password);
       if (result.success) {
         navigate('/');
+      } else {
+        setGeneralError('Invalid email or password');
       }
     } catch (err) {
-      setError('Login failed. Please try again.');
+      setGeneralError('Login failed. Please try again.');
     }
   };
 
@@ -45,10 +68,8 @@ const LoginPage = () => {
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
-          {error && <div className="error-message">{error}</div>}
-
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">Email Address <span>*</span></label>
             <input
               type="email"
               id="email"
@@ -57,10 +78,11 @@ const LoginPage = () => {
               placeholder="Enter your email"
               required
             />
+            {emailError && <small className="validation-error">{emailError}</small>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password <span>*</span></label>
             <input
               type="password"
               id="password"
@@ -69,7 +91,10 @@ const LoginPage = () => {
               placeholder="Enter your password"
               required
             />
+            {passwordError && <small className="validation-error">{passwordError}</small>}
           </div>
+
+          {generalError && <div className="validation-error general">{generalError}</div>}
 
           <button type="submit" className="auth-button">
             Sign In
@@ -78,15 +103,11 @@ const LoginPage = () => {
 
         <div className="auth-footer">
           <p>
-            Don't have an account?{' '}
+            Don’t have an account?{' '}
             <Link to="/signup" className="auth-link">
               Sign Up
             </Link>
           </p>
-        </div>
-
-        <div className="demo-credentials">
-          <p>💡 Demo: Use any email and password (min 6 chars)</p>
         </div>
       </div>
     </div>
@@ -94,4 +115,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

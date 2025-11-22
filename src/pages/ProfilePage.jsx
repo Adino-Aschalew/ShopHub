@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { FaUser } from 'react-icons/fa';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
@@ -87,7 +88,7 @@ const ProfilePage = () => {
             </div>
             <label className="avatar-upload-btn">
               <input type="file" accept="image/*" onChange={handlePhotoUpload} style={{display: 'none'}} />
-              📷 Change Photo
+              <FaUser/> Change Photo
             </label>
           </div>
           <div className="profile-info">

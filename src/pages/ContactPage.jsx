@@ -41,17 +41,17 @@ const ContactPage = () => {
             <div className="info-card">
               <div className="info-icon"><MdMarkEmailUnread/></div>
               <h3>Email</h3>
-              <p>support@shophub.com</p>
+              <p>support@Ethio-Hub.com</p>
             </div>
             <div className="info-card">
               <div className="info-icon"><FaPhoneAlt/></div>
               <h3>Phone</h3>
-              <p>+1 (555) 123-4567</p>
+              <p>+2519-123-4567</p>
             </div>
             <div className="info-card">
               <div className="info-icon"><FaAddressBook/></div>
               <h3>Address</h3>
-              <p>123 Commerce Street<br />New York, NY 10001<br />United States</p>
+              <p>123 Commerce Street<br />BahirDar City<br />Ethiopia</p>
             </div>
             <div className="info-card">
               <div className="info-icon"><FaClock/></div>

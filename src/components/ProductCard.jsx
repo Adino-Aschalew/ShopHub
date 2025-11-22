@@ -21,7 +21,11 @@ const ProductCard = ({ product }) => {
       <div className="product-card">
         <div className="product-image-wrapper">
           {discount > 0 && <span className="discount-badge">-{discount}%</span>}
-          <img src={product.image} alt={product.name} className="product-image" />
+          {product.image ? (
+            <img src={product.image} alt={product.name} className="product-image" />
+          ) : (
+            <div className="product-image placeholder">No image</div>
+          )}
           <button 
             className="add-to-cart-btn"
             onClick={handleAddToCart}

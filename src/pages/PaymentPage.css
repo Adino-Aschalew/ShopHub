@@ -29,7 +29,7 @@
 
 .shop-btn {
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -44,7 +44,7 @@
 }
 
 .success-screen {
-  background: linear-gradient(135deg, #2ed573, #39d57f);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
 }
 
@@ -53,7 +53,7 @@
   height: 100px;
   border-radius: 50%;
   background: white;
-  color: #2ed573;
+  color: #00F260;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +140,7 @@
 .summary-item span {
   margin-left: auto;
   font-weight: bold;
-  color: #667eea;
+  color: #0575E6;
 }
 
 .summary-totals {
@@ -158,7 +158,7 @@
 .total-row.final-total {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #667eea;
+  color: #0575E6;
   border-top: 2px solid #ddd;
   padding-top: 1rem;
   margin-top: 1rem;
@@ -206,7 +206,7 @@
 }
 
 .form-group input:focus {
-  border-color: #667eea;
+  border-color: #0575E6;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -222,7 +222,7 @@
 .submit-payment-btn {
   width: 100%;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
   border: none;
   border-radius: 15px;

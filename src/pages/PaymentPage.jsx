@@ -72,9 +72,39 @@ const PaymentPage = () => {
 
     // Simulate payment processing
     setTimeout(() => {
+      // create order record and persist to localStorage for admin dashboard
+      try {
+        const order = {
+          id: Date.now(),
+          user: user ? { id: user.id, email: user.email, name: user.name } : null,
+          items: cart.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
+          total: total,
+          status: 'processing',
+          createdAt: new Date().toISOString()
+        };
+
+        const saved = localStorage.getItem('adminOrders');
+        const orders = saved ? JSON.parse(saved) : [];
+        orders.unshift(order);
+        localStorage.setItem('adminOrders', JSON.stringify(orders));
+
+        // also persist customer snapshot for admin customers list
+        if (user) {
+          const savedCust = localStorage.getItem('adminCustomers');
+          const customers = savedCust ? JSON.parse(savedCust) : [];
+          const exists = customers.find(c => c.email === user.email);
+          if (!exists) {
+            customers.unshift({ id: user.id, email: user.email, name: user.name, avatar: user.avatar });
+            localStorage.setItem('adminCustomers', JSON.stringify(customers));
+          }
+        }
+      } catch (err) {
+        console.error('Failed to persist order locally', err);
+      }
+
       clearCart();
       setShowSuccess(true);
-      
+
       setTimeout(() => {
         navigate('/profile');
       }, 2000);
@@ -174,7 +204,7 @@ const PaymentPage = () => {
                   name="cardName"
                   value={formData.cardName}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Adino Ascha"
                   className={errors.cardName ? 'error' : ''}
                 />
                 {errors.cardName && <span className="error-text">{errors.cardName}</span>}
@@ -235,7 +265,7 @@ const PaymentPage = () => {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
-                    placeholder="New York"
+                    placeholder="BahirDar"
                     className={errors.city ? 'error' : ''}
                   />
                   {errors.city && <span className="error-text">{errors.city}</span>}
@@ -249,7 +279,7 @@ const PaymentPage = () => {
                     name="zipCode"
                     value={formData.zipCode}
                     onChange={handleChange}
-                    placeholder="10001"
+                    placeholder="6000"
                     className={errors.zipCode ? 'error' : ''}
                   />
                   {errors.zipCode && <span className="error-text">{errors.zipCode}</span>}

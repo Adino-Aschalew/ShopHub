@@ -3,9 +3,14 @@ import { useState } from 'react';
 import {FaStar,FaStarHalfAlt,FaRegStar} from 'react-icons/fa';
 
 const Rating = ({ rating, reviews, interactive = false, onRatingChange }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  // Ensure rating is a safe number between 0 and 5
+  let r = Number(rating);
+  if (!isFinite(r) || isNaN(r)) r = 0;
+  r = Math.max(0, Math.min(5, r));
+
+  const fullStars = Math.floor(r);
+  const hasHalfStar = r - fullStars >= 0.5;
+  const emptyStars = Math.max(0, 5 - fullStars - (hasHalfStar ? 1 : 0));
 
   const handleClick = (value) => {
     if (interactive && onRatingChange) {

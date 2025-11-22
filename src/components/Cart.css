@@ -43,13 +43,13 @@
   align-items: center;
   padding: 1.5rem;
   border-bottom: 1px solid #eee;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
 }
 
 .cart-header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .close-btn {
@@ -58,9 +58,11 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: white;
+  width: 50px;
+  height: 50px;
   padding: 0.5rem;
   border-radius: 50%;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .close-btn:hover {
@@ -87,7 +89,7 @@
 .shop-btn {
   display: inline-block;
   padding: 0.75rem 2rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -122,12 +124,13 @@
 
 .cart-item-details h4 {
   margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-  color: #333;
+  font-size: 1.03rem;
+  font-weight: bold;
+  color: #3d3d3d;
 }
 
 .cart-item-price {
-  color: #667eea;
+  color: #0575E6;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -150,9 +153,9 @@
 }
 
 .qty-btn:hover {
-  background: #667eea;
+  background: #0575E6;
   color: white;
-  border-color: #667eea;
+  border-color: #0575E6;
 }
 
 .qty-value {
@@ -168,6 +171,7 @@
   cursor: pointer;
   padding: 0.5rem;
   transition: transform 0.3s ease;
+  color: rgb(252, 9, 9);
 }
 
 .remove-btn:hover {
@@ -190,7 +194,7 @@
 }
 
 .total-price {
-  color: #667eea;
+  color: #0575E6;
   font-size: 1.5rem;
 }
 
@@ -198,7 +202,7 @@
   display: block;
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
   text-decoration: none;
   border-radius: 10px;

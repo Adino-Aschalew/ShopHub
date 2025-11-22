@@ -36,7 +36,7 @@
 }
 
 .info-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   padding: 2rem;
   border-radius: 15px;
   color: white;
@@ -93,14 +93,14 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #667eea;
+  border-color: #0575E6;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -117,7 +117,7 @@
 
 .success-message {
   padding: 1rem;
-  background: #2ed573;
+  background: #00F260;
   color: white;
   border-radius: 10px;
   text-align: center;

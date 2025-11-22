@@ -28,12 +28,31 @@ export const promotionalBanners = [
   },
   {
     id: 4,
-    title: "Fitness Gear",
-    subtitle: "Train Like a Pro",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600",
-    link: "/products?category=Sports",
+    title: "Baby Care",
+    subtitle: "Essentials for Your Littel One",
+    image: "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmFieSUyMGNhcmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=700",
+    link: "/products?category=Baby",
     bgColor: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+  },
+  {
+    id: 5,
+    title: "Electronics Hub",
+    subtitle: "Latest Gadgest and Devices",
+    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWxlY3Ryb25pY3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=700",
+    link: "/products?category=Electronics",
+    bgColor: "linear-gradient(135deg, #ff00aaff 0%, #1df00aff 100%)"
+  },
+  {
+    id: 6,
+    title: "Office Essentials",
+    subtitle: "Everything You Need For Work",
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=700",
+    link: "/products?category=Office",
+    bgColor: "linear-gradient(135deg, #095df879 0%, #f94f3893 100%)"
   }
+
+
+  
 ];
 
 export const topDeals = [

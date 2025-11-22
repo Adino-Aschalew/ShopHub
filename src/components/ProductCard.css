@@ -56,18 +56,25 @@
 
 .add-to-cart-btn {
   position: absolute;
-  bottom: -50px;
+  bottom: -58px;
   left: 0;
+  border-radius: 0;
   right: 0;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
+  background-image: linear-gradient(135deg,#0575E6 0%,#00F260 100%);
+  color: rgb(255, 255, 255);
   border: none;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
+  outline: none;
   transition: all 0.3s ease;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
 }
 
 .product-card:hover .add-to-cart-btn {
@@ -75,7 +82,7 @@
 }
 
 .add-to-cart-btn:hover {
-  background: linear-gradient(135deg, #764ba2, #667eea);
+  background-image: linear-gradient(135deg,#00F260 0%, #0575E6 100%);
 }
 
 .product-info {
@@ -88,7 +95,8 @@
 
 .product-brand {
   font-size: 0.85rem;
-  color: #667eea;
+  color: #00F260;
+  font-family: "Ubuntu",sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -104,7 +112,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 3rem;
+  min-height: 1rem;
 }
 
 .product-price {
@@ -115,13 +123,13 @@
 }
 
 .current-price {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: #667eea;
+  color: #00F260;
 }
 
 .original-price {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #999;
   text-decoration: line-through;
 }

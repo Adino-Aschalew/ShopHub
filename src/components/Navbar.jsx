@@ -27,14 +27,26 @@ const Navbar = ({ onMenuClick }) => {
     setShowUserMenu(false);
     navigate('/');
   };
+  useEffect(() =>{
+    const handleClickOutside = (event) =>{
+      if(!event.target.closet('.user-menu-wrapper')){
+        setShowUserMenu(false);
+      }
+    }
+    document.addEventListener('click',handleClickOutside);
+    return() =>{
+      document.removeEventListener('click',handleClickOutside);
+    }
+  },[])
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        {/* Menu Toggle Button */}
-        <button className="sidebar-toggle" onClick={onMenuClick} aria-label="Toggle menu">
+      <button className="sidebar-toggle" onClick={onMenuClick} aria-label="Toggle menu">
           <FaBars/>
         </button>
+      <div className="navbar-container">
+        {/* Menu Toggle Button */}
+        
         
         {/* Logo */}
         <Link to="/" className="navbar-logo">

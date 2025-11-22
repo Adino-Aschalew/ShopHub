@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Sidebar.css';
-import {FaHome,FaBox,FaUser,FaKissBeam } from 'react-icons/fa';
+import {FaHome,FaBox,FaUser,FaKissBeam, FaShieldAlt } from 'react-icons/fa';
 import { MdElectricBolt,MdSportsBaseball,MdMusicNote  } from "react-icons/md";
 import { SiStylelint } from "react-icons/si";
 import { FaKitchenSet,FaBabyCarriage  } from "react-icons/fa6";
@@ -30,6 +30,12 @@ const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         <nav className="sidebar-nav">
+          {/* Admin Link (top) */}
+          <div className="nav-section">
+            <Link to="/admin" className="nav-link admin-link" onClick={onClose}>
+              <FaShieldAlt/> Admin
+            </Link>
+          </div>
           {/* Main Menu */}
           <div className="nav-section">
             <Link to="/" className="nav-link" onClick={onClose}>
@@ -42,7 +48,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
           {/* Categories */}
           <div className="nav-section">
-            <h4>Categories</h4>
+            <h4>Categories</h4><hr/>
             <Link to="/products?category=Electronics" className="nav-link" onClick={onClose}>
               <MdElectricBolt/> Electronics
             </Link>
@@ -74,7 +80,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
           {/* Quick Links */}
           <div className="nav-section">
-            <h4>Quick Links</h4>
+            <h4>Quick Links</h4><hr/>
             <Link to="/categories" className="nav-link" onClick={onClose}>
               Categories
             </Link>
@@ -88,7 +94,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
           {/* Customer Service */}
           <div className="nav-section">
-            <h4>Customer Service</h4>
+            <h4>Customer Service</h4><hr/>
             <Link to="/contact" className="nav-link" onClick={onClose}>
               Contact Us
             </Link>
@@ -105,7 +111,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
           {/* Legal */}
           <div className="nav-section">
-            <h4>Legal</h4>
+            <h4>Legal</h4><hr/>
             <Link to="/privacy" className="nav-link" onClick={onClose}>
               Privacy Policy
             </Link>
@@ -123,7 +129,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           {/* User Section */}
           {user && (
             <div className="nav-section user-section">
-              <Link to="/profile" className="nav-link user-link" onClick={onClose}>
+              <Link to="/profile" className=" user-link" onClick={onClose}>
                 <FaUser/> Profile
               </Link>
             </div>

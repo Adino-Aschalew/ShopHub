@@ -1,4 +1,11 @@
 import './ShippingPage.css';
+import {FaBox,FaQuestion } from 'react-icons/fa';
+import { GiWorld } from "react-icons/gi";
+import { LuNotebookPen } from "react-icons/lu";
+import { IoIosWarning } from "react-icons/io";
+
+
+
 
 const ShippingPage = () => {
   return (
@@ -7,7 +14,7 @@ const ShippingPage = () => {
         <h1>Shipping Information</h1>
 
         <div className="shipping-section">
-          <h2>📦 Shipping Options</h2>
+          <h2><FaBox/> Shipping Options</h2>
           <div className="info-grid">
             <div className="info-item">
               <h3>Standard Shipping</h3>
@@ -31,7 +38,7 @@ const ShippingPage = () => {
         </div>
 
         <div className="shipping-section">
-          <h2>🌍 International Shipping</h2>
+          <h2><GiWorld/> International Shipping</h2>
           <p>We ship to over 50 countries worldwide!</p>
           <ul>
             <li>International delivery: 10-15 business days</li>
@@ -41,12 +48,12 @@ const ShippingPage = () => {
         </div>
 
         <div className="shipping-section">
-          <h2>📋 Order Tracking</h2>
+          <h2><LuNotebookPen/> Order Tracking</h2>
           <p>Once your order ships, you'll receive a tracking number via email. You can track your package in real-time on our website.</p>
         </div>
 
         <div className="shipping-section">
-          <h2>⚠️ Important Notes</h2>
+          <h2><IoIosWarning/> Important Notes</h2>
           <ul>
             <li>Processing time: 1-2 business days</li>
             <li>No shipping on holidays</li>
@@ -56,7 +63,7 @@ const ShippingPage = () => {
         </div>
 
         <div className="shipping-section">
-          <h2>❓ Questions?</h2>
+          <h2><FaQuestion/> Questions?</h2>
           <p>Have questions about shipping? <a href="/contact">Contact us</a> and we'll be happy to help!</p>
         </div>
       </div>

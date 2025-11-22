@@ -1,37 +1,95 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { products, categories } from '../data/products';
+import { products as seedProducts, categories } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import { IoIosArrowDropdownCircle } from 'react-icons/io';
+
 import './ProductListPage.css';
 
 const ProductListPage = () => {
   const [searchParams] = useSearchParams();
-  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  // baseProducts holds the authoritative product list (admin-local overrides or seed)
+  const [baseProducts, setBaseProducts] = useState(seedProducts);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [searchTerm, setSearchTerm] = useState('');
 
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const sortRef = useRef(null);
+
+  const sortOptions = [
+    { value: 'default', label: 'Default' },
+    { value: 'price-low', label: 'Price: Low to High' },
+    { value: 'price-high', label: 'Price: High to Low' },
+    { value: 'rating', label: 'Highest Rated' },
+    { value: 'newest', label: 'Newest' }
+  ];
+
+  const getSortLabel = (val) => {
+    const found = sortOptions.find(o => o.value === val);
+    return found ? found.label : 'Sort';
+  };
+
+  // Close sort dropdown on outside click
   useEffect(() => {
-    // Get filters from URL params
+    const onDocClick = (e) => {
+      if (isSortOpen && sortRef.current && !sortRef.current.contains(e.target)) {
+        setIsSortOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', onDocClick);
+    return () => document.removeEventListener('mousedown', onDocClick);
+  }, [isSortOpen]);
+
+  // Initialize category and search from URL params (run when params change)
+  useEffect(() => {
     const category = searchParams.get('category') || 'all';
     const search = searchParams.get('search') || '';
 
     setSelectedCategory(category);
     setSearchTerm(search);
+  }, [searchParams]);
 
-    // Apply filters
-    let filtered = [...products];
+  // Load admin products from localStorage (if present), and listen for admin updates
+  useEffect(() => {
+    const load = () => {
+      try {
+        const saved = localStorage.getItem('adminProducts');
+        if (saved) {
+          const adminList = JSON.parse(saved) || [];
+          // Merge seedProducts and adminList: admin items override by id, admin additions included
+          const map = {};
+          seedProducts.forEach(p => { map[p.id] = p; });
+          adminList.forEach(p => { map[p.id] = p; });
+          setBaseProducts(Object.values(map));
+        } else setBaseProducts(seedProducts);
+      } catch (e) {
+        setBaseProducts(seedProducts);
+      }
+    };
+
+    load();
+    const onUpdate = () => load();
+    window.addEventListener('adminProductsUpdated', onUpdate);
+    return () => window.removeEventListener('adminProductsUpdated', onUpdate);
+  }, []);
+
+  // Apply filters whenever selectedCategory, searchTerm, sortBy or baseProducts change
+  useEffect(() => {
+    let filtered = [...baseProducts];
 
     // Filter by category
-    if (category !== 'all') {
-      filtered = filtered.filter(p => p.category === category);
+    if (selectedCategory && selectedCategory !== 'all') {
+      filtered = filtered.filter(p => p.category === selectedCategory);
     }
 
     // Filter by search term
-    if (search) {
+    if (searchTerm) {
       filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.brand.toLowerCase().includes(search.toLowerCase())
+        (p.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (p.brand || '').toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -47,7 +105,7 @@ const ProductListPage = () => {
     }
 
     setFilteredProducts(filtered);
-  }, [searchParams, sortBy]);
+  }, [selectedCategory, searchTerm, sortBy, baseProducts]);
 
   return (
     <div className="product-list-page">
@@ -60,30 +118,53 @@ const ProductListPage = () => {
           </h1>
           <p className="results-count">{filteredProducts.length} products found</p>
         </div>
-
         {/* Filters and Sort */}
         <div className="controls-bar">
           <div className="category-filters">
             {categories.map(cat => (
-              <button
-                key={cat.value}
-                className={`category-filter ${selectedCategory === cat.value ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat.value)}
-              >
+             <button
+               key={cat.value}
+               className={`category-filter ${selectedCategory === cat.value ? 'active': ''}`}
+               onClick={()=>setSelectedCategory(cat.value)}
+             >
                 {cat.name}
-              </button>
+             </button>
             ))}
           </div>
 
           <div className="sort-controls">
             <label>Sort by:</label>
-            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-              <option value="default">Default</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-              <option value="newest">Newest</option>
-            </select>
+            <div className="dropdown" ref={sortRef}>
+              <button
+                type="button"
+                className="dropdown-btn"
+                aria-haspopup="true"
+                aria-expanded={isSortOpen}
+                onClick={() => setIsSortOpen(prev => !prev)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setIsSortOpen(false);
+                }}
+              >
+                {getSortLabel(sortBy)} <span className="caret"><IoIosArrowDropdownCircle/></span>
+              </button>
+
+              {isSortOpen && (
+                <ul className="dropdown-menu" role="menu">
+                  {sortOptions.map(opt => (
+                    <li key={opt.value} role="none">
+                      <button
+                        role="menuitem"
+                        type="button"
+                        className={`dropdown-item ${sortBy === opt.value ? 'active' : ''}`}
+                        onClick={() => { setSortBy(opt.value); setIsSortOpen(false); }}
+                      >
+                        {opt.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
 
