@@ -6,13 +6,13 @@
 
 ## Screenshots
 
-Home Page:
+***Home Page:****
 ![Home](public/Home.PNG)
 
-Product List:
+****Product List:***
 ![Product List](public/Product.PNG)
 
-Admin Dashboard:
+****Admin Dashboard:***
 ![Admin Board](public/Admin.PNG)
 
 # ShopHub - E-Commerce Web Application
