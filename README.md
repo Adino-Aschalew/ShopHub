@@ -6,18 +6,18 @@
 
 ## Screenshots
 
-***Home Page:****
-![Home](public/Home.PNG)
+***Home Page:***
+##![Home](public/Home.PNG)
 
-****Product List:***
-![Product List](public/Product.PNG)
+***Product List:***
+##![Product List](public/Product.PNG)
 
 ****Admin Dashboard:***
-![Admin Board](public/Admin.PNG)
+##![Admin Board](public/Admin.PNG)
 
 # ShopHub - E-Commerce Web Application
 
-A fully responsive, modern e-commerce web application built with React.js and pure CSS. This is a 100% frontend application with simulated data - no backend required!
+**A fully responsive, modern e-commerce web application built with React.js and pure CSS. This is a 100% frontend application with simulated data - no backend required!**
 
 ## Features
 
