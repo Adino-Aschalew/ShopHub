@@ -7,7 +7,7 @@
 ## Screenshots
 
 Home Page:
-![Home screen](public/Home.png)
+![Home](public/Home.png)
 
 Product List:
 ![Product List](public/Product.png)
